@@ -48,7 +48,11 @@ int main(){
     cout<<" ";
     }
 
-    cout<<"Enter invalid Input";
+    else{
+
+    cout<<"\nInvalid Input";
+    
+    }
 
 }
 
