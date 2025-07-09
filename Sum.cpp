@@ -1,10 +1,8 @@
 #include<iostream>
 using namespace std;
 
-int add(int,int);
-int add(int,int,int);
-int sub(int,int);
-int sub(int,int,int);
+int add(int,int,int=0);
+int sub(int,int,int=0);
 
 int main(){
 
@@ -56,21 +54,9 @@ int main(){
 
 }
 
-int add(int x,int y){
-
-    return x+y;
-
-}
-
 int add(int x,int y,int z){
 
     return x+y+z;
-
-}
-
-int sub(int x,int y){
-
-    return x-y;
 
 }
 
