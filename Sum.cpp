@@ -6,7 +6,7 @@ int sub(int,int,int=0);
 
 int main(){
 
-    int o,a,b,c,s;
+    int o,a,b,t,c,s;
 
     cout<<"Select the fllowing operation :";
     cout<<"\n"<<"1. Add\n2. Subtract\n";
@@ -23,9 +23,17 @@ int main(){
 
         cin>>b;
 
+        cout<<"Want to enter third number : \n1. Yes\n2. No\n-->";
+
+        cin>>t;
+
+        if(t==1){
+
         cout<<"Enter Third number : ";
 
-    cin>>c;
+        cin>>c;
+
+        }
 
     if(o==1) {
 
