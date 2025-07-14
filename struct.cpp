@@ -37,7 +37,7 @@ class Book{
 
 int main(){
 
-    struct Book b1;
+    Book b1;
 
     b1.bookinput();
 
