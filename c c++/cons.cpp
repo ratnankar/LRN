@@ -5,9 +5,9 @@ class A{
 
     public:
 
-        A(){
+        A(int a){
 
-            cout<<"A Called\n";
+            cout<<a<<"\n";
         }
 
         void bnk(){};
@@ -16,8 +16,8 @@ class A{
 
 int main(){
 
-    A obj;
+    A obj(5);
     obj.bnk();
-    A obj2;
+    A obj2(10);
 
 }
