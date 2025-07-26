@@ -13,7 +13,7 @@ int main(){
 
     cout<<*p<<" "<<*q;
 
-    free(p);
+    delete p;
 
     free(q);
 
