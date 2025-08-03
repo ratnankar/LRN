@@ -5,7 +5,7 @@ class Array{
 
     private:
 
-        int cap;
+        int capacity;
         int lastIn;
         int *ptr;
 
@@ -23,7 +23,27 @@ class Array{
         int getCapacity();
 };
 
+Array::Array(){
+
+    ptr = NULL;
+}
+
+void Array::createArray(int cap){
+
+    capacity = cap;
+    lastIn = -1;
+
+    if(ptr != NULL){
+
+        delete ptr;
+    }
+
+    ptr = new int[capacity];
+}
+
 int main(){
 
-    
+    Array arr;
+
+    arr.createArray(4);
 }
