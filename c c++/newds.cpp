@@ -41,9 +41,65 @@ void Array::createArray(int cap){
     ptr = new int[capacity];
 }
 
+void Array::append(int data){
+
+    if(!isFull()){
+
+        lastIn++;
+        ptr[lastIn] = data;
+    }
+
+    else{
+
+        cout<<"Data Overflow"<<endl;
+    }
+}
+
+int Array::getItem(int In){
+
+    return ptr[In];
+}
+
+bool Array::isEmpty(){
+
+    return lastIn == -1;
+}
+
+bool Array::isFull(){
+
+    return lastIn == capacity-1;
+}
+
+void Array::del(int Ind){
+
+    for(int i = Ind; i<lastIn; i++){
+
+        ptr[i] = ptr[i+1];
+    }
+
+    lastIn--;
+}
+
+void Array::edit(int Indx, int el){
+
+    ptr[Indx] = el;
+}
+
+int Array::count(){
+
+    return lastIn+1;
+}
+
+int Array::getCapacity(){
+
+    return capacity;
+}
+
 int main(){
 
     Array arr;
 
     arr.createArray(4);
+
+    
 }
