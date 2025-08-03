@@ -41,6 +41,41 @@ void Array::createArray(int cap){
     ptr = new int[capacity];
 }
 
+void Array::insert(int Index, int dt){
+
+    try{
+
+        if(Index<0 || Index>lastIn+1){
+
+            throw 1;
+        }
+
+        if(isFull()){
+
+            throw 2;
+        }
+
+        for(int i = lastIn; i>=Index; i--){
+
+            ptr[i+1] = ptr[i];
+        }
+        ptr[Index] = dt;
+    }
+
+    catch(int e){
+
+        if(e==1){
+
+            cout<<"Invalid Index";
+        }
+
+        if(e==2){
+
+            cout<<"Overflow";
+        }
+    }
+}
+
 void Array::append(int data){
 
     if(!isFull()){
@@ -51,7 +86,7 @@ void Array::append(int data){
 
     else{
 
-        cout<<"Data Overflow"<<endl;
+        cout<<"Overflow : Append not performed"<<endl;
     }
 }
 
@@ -99,7 +134,4 @@ int main(){
 
     Array arr;
 
-    arr.createArray(4);
-
-    
 }
