@@ -5,39 +5,25 @@ class Array{
 
     private:
 
-        int capacity;
-        int cur;
-        int *p;
+        int cap;
+        int lastIn;
+        int *ptr;
 
     public:
     
-    void newarray(){
-
-        p = new int;
-    
-    }
-
-    void insarray(){
-
-        printf("Enter the element : ");
-        scanf("%d",&(p[0]));
-
-    }
-
-    void disarray(){
-
-        cout<<p[0];
-
-    }
-
+        void createArray(int);
+        void insert(int, int);
+        void append(int);
+        int getItem(int);
+        bool isEmpty();
+        bool isFull();
+        void del(int);
+        void edit(int, int);
+        int count();
+        int getCapacity();
 };
 
 int main(){
 
-    Array obj1;
-
-    obj1.newarray();
-    obj1.insarray();
-    obj1.disarray();
-
+    
 }
