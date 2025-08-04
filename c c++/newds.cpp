@@ -12,6 +12,8 @@ class Array{
     public:
     
         Array();
+        Array(Array&);
+        Array& operator=(Array&);
         void createArray(int);
         void insert(int, int);
         void append(int);
@@ -22,11 +24,38 @@ class Array{
         void edit(int, int);
         int count();
         int getCapacity();
+        ~Array();
 };
 
 Array::Array(){
 
     ptr = NULL;
+}
+
+Array::Array(Array &arr){
+
+    capacity = arr.capacity;
+    lastIn = arr.lastIn;
+    ptr = new int[capacity];
+    for(int i = 0; i<=lastIn; i++){
+
+        ptr[i] = arr.ptr[i];
+    }
+}
+
+Array& Array::operator=(Array &arr){
+
+    capacity = arr.capacity;
+    lastIn = arr.lastIn;
+    if(ptr != NULL){
+        delete [] ptr;
+    }
+    ptr = new int[capacity];
+    for(int i = 0; i<=lastIn; i++){
+
+        ptr[i] = arr.ptr[i];
+    }
+    return(*this);
 }
 
 void Array::createArray(int cap){
@@ -179,17 +208,24 @@ int Array::getCapacity(){
     return capacity;
 }
 
+Array::~Array(){
+
+    delete[] ptr;
+}
+
 int main(){
 
-    Array arr;
+    Array arr1;
 
-    arr.createArray(5);
-    arr.insert(0,33);
-    arr.append(34);
-    arr.append(333);
-    arr.del(1);
+    arr1.createArray(5);
+    arr1.insert(0,33);
+    arr1.append(34);
+    arr1.append(333);
+    arr1.del(1);
 
-    int a = arr.getItem(1);
+    Array arr2;
+    arr2 = arr1;
 
-    cout<<a;
+    cout<<arr2.getItem(1);
+    
 }
