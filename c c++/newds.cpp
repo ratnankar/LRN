@@ -61,6 +61,7 @@ void Array::insert(int Index, int dt){
             ptr[i+1] = ptr[i];
         }
         ptr[Index] = dt;
+        lastIn++;
     }
 
     catch(int e){
