@@ -36,7 +36,7 @@ void Array::createArray(int cap){
 
     if(ptr != NULL){
 
-        delete ptr;
+        delete[] ptr;
     }
 
     ptr = new int[capacity];
@@ -150,7 +150,22 @@ void Array::del(int Ind){
 
 void Array::edit(int Indx, int el){
 
-    ptr[Indx] = el;
+    try{
+
+        if(Indx<0||Indx>lastIn){
+
+            throw 1;
+        }
+        ptr[Indx] = el;
+    }
+
+    catch(int e){
+
+        if(e==1){
+
+            cout<<"Invalid Index";
+        }
+    }
 }
 
 int Array::count(){
