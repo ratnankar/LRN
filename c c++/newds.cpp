@@ -183,4 +183,13 @@ int main(){
 
     Array arr;
 
+    arr.createArray(5);
+    arr.insert(0,33);
+    arr.append(34);
+    arr.append(333);
+    arr.del(1);
+
+    int a = arr.getItem(1);
+
+    cout<<a;
 }
