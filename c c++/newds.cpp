@@ -11,6 +11,7 @@ class Array{
 
     public:
     
+        Array();
         void createArray(int);
         void insert(int, int);
         void append(int);
@@ -92,7 +93,23 @@ void Array::append(int data){
 
 int Array::getItem(int In){
 
-    return ptr[In];
+    try{
+
+        if(In<0||In>lastIn){
+
+            throw 1;
+        }
+        return ptr[In];
+    }
+
+    catch(int e){
+
+        if(e==1){
+
+            cout<<"Invalid Index";
+        }
+    }
+    return -1;
 }
 
 bool Array::isEmpty(){
@@ -107,12 +124,28 @@ bool Array::isFull(){
 
 void Array::del(int Ind){
 
-    for(int i = Ind; i<lastIn; i++){
+    try{
+
+        if(Ind<0||Ind>lastIn){
+            
+            throw 1;
+        }
+        for(int i = Ind; i<lastIn; i++){
 
         ptr[i] = ptr[i+1];
+        }
+        lastIn--;
     }
+        
 
-    lastIn--;
+    catch(int e){
+
+        if(e==1){
+
+            cout<<"Invalid Index";
+        }
+    }
+    
 }
 
 void Array::edit(int Indx, int el){
