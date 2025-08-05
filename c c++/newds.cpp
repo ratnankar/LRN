@@ -24,6 +24,7 @@ class Array{
         void edit(int, int);
         int count();
         int getCapacity();
+        void doubleArray();
         ~Array();
 };
 
@@ -206,6 +207,22 @@ int Array::count(){
 int Array::getCapacity(){
 
     return capacity;
+}
+
+void Array::doubleArray(){
+
+    int* temp = new int[capacity*2];
+
+    for(int i = 0; i<capacity; i++){
+
+        temp[i] = ptr[i];
+    }
+
+    delete[] ptr;
+
+    ptr = temp;
+
+    capacity = capacity*2;
 }
 
 Array::~Array(){
