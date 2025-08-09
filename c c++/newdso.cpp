@@ -3,9 +3,10 @@ using namespace std;
 
 class Array{
 
-    int capacity;
-    int lastIn;
-    int* ptr;
+    private:
+        int capacity;
+        int lastIn;
+        int* ptr;
 
     public:
     
@@ -58,7 +59,7 @@ Array& Array::operator=(Array& arr){
         ptr[i] = arr.ptr[i];
     }
 
-    return (*this);
+    return *this;
 }
 
 void Array::createArray(int cap){
@@ -238,7 +239,9 @@ int main(){
     arr1.append(34);
     arr1.append(85);
 
-    int a = arr1.getEl(1);
+    Array arr2,arr3;
 
-    cout<<a; 
+    arr3 = arr2 = arr1;
+
+    cout<<arr3.getEl(1);
 }
