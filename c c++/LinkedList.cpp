@@ -23,7 +23,8 @@ class SLL{
         void deleteLast();
         void deleteNode();
         void edit();
-        int search(int);
+        int getData(int);
+        node* search(int);
         int count();
         // ~SLL();
 };
@@ -56,7 +57,7 @@ void SLL::insertAtLast(int data){
     }
     else{
 
-        while(t->next != NULL){
+        while(t->next){
 
             t = t->next;
         }
@@ -66,16 +67,17 @@ void SLL::insertAtLast(int data){
         
 }
 
-int SLL::search(int In){
+int SLL::getData(int In){
 
     try{
 
         node* t = start;
         int i;
 
-        for(i = 0; t->next !=NULL; i++){
+        while(t->next){
 
             t = t->next;
+            i++;
         }
 
         if(In>i||In<0){
@@ -102,6 +104,22 @@ int SLL::search(int In){
 
 }
 
+node* SLL::search(int data){
+
+    node* t = start;
+
+    while(t->item != data){
+
+        t = t->next;
+        if(t==NULL){
+
+            return t;
+        }
+    }
+
+    return t;
+}
+
 int main(){
 
     SLL obj1;
@@ -115,7 +133,9 @@ int main(){
     cout<<"Enter the index to search : ";
     cin>>k;
 
-    int a = obj1.search(k);
+    int a = obj1.getData(k);
 
-    cout<<a;
+    node* b = obj1.search(9);
+
+    cout<<a<<endl<<b;
 }
