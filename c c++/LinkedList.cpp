@@ -9,10 +9,10 @@ struct node{
 
 class SLL{
 
-    public:
-        node* start;
-        node* curptr;
+    node* start;
 
+    public:
+        
         SLL();
         SLL(SLL&);
         SLL operator=(SLL&);
@@ -38,30 +38,84 @@ void SLL::insertAtStart(int data){
     node* n = new node;
     n->item = data;
     n->next = start;
-    if(start==NULL){
-
-        curptr = n;
-    }
     start = n;
 }
 
 void SLL::insertAtLast(int data){
 
     node* n = new node;
-    curptr = n;
+    node* t;
     n->item = data;
     n->next = NULL;
+
+    t = start;
+    
+    if(start==NULL){
+
+        start = n;
+    }
+    else{
+
+        while(t->next != NULL){
+
+            t = t->next;
+        }
+
+        t->next = n;
+    }
+        
+}
+
+int SLL::search(int In){
+
+    try{
+
+        node* t = start;
+        int i;
+
+        for(i = 0; t->next !=NULL; i++){
+
+            t = t->next;
+        }
+
+        if(In>i||In<0){
+
+            throw 0;
+        }
+
+        t = start;
+
+        for(int i = 0; i<In; i++){
+
+            t = t->next;
+        }
+
+        return t->item;
+
+    }
+    catch(int e){
+
+        cout<<"Invalid Index"<<endl;
+
+        return -1;
+    }
+
 }
 
 int main(){
 
     SLL obj1;
 
-    obj1.insertAtStart(90);
-    obj1.insertAtStart(78);
-    obj1.insertAtLast(45);
-    obj1.insertAtLast(23);
-    obj1.insertAtStart(26);
+    obj1.insertAtStart(73);
+    obj1.insertAtLast(34);
+    obj1.insertAtLast(37);
 
-    cout<<obj1.curptr->item;
+    int k;
+
+    cout<<"Enter the index to search : ";
+    cin>>k;
+
+    int a = obj1.search(k);
+
+    cout<<a;
 }
