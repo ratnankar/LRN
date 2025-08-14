@@ -15,7 +15,7 @@ class SLL{
         
         SLL();
         SLL(SLL&);
-        SLL operator=(SLL&);
+        SLL& operator=(SLL&);
         void insertAtStart(int);
         void insertAtLast(int);
         void insertAfter(node*,int);
@@ -31,6 +31,35 @@ class SLL{
 SLL::SLL(){
 
     start=NULL;
+}
+
+SLL::SLL(SLL& l){
+
+    start = NULL;
+    node* n = l.start;
+
+    while(n){
+
+        insertAtLast(n->item);
+        n=n->next;
+    }
+}
+
+SLL& SLL::operator=(SLL& l){
+
+    while(start!=NULL){
+
+        deleteFirst();
+    }
+    node* n = l.start;
+
+    while(n){
+
+        insertAtLast(n->item);
+        n=n->next;
+    }
+
+    return *this;
 }
 
 void SLL::insertAtStart(int data){
@@ -176,5 +205,16 @@ int main(){
     SLL obj1;
 
     obj1.insertAtLast(23);
-    obj1.insertAtStart(24);
+    obj1.insertAtLast(24);
+
+    SLL obj2 = obj1;
+
+    cout<<obj1.search(23)<<endl;
+    cout<<obj2.search(24)<<endl;
+
+    SLL obj3;
+
+    obj3 = obj2;
+
+    cout<<obj3.search(24);
 }
