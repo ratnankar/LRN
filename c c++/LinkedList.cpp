@@ -18,15 +18,14 @@ class SLL{
         SLL operator=(SLL&);
         void insertAtStart(int);
         void insertAtLast(int);
-        void insertAfter();
+        void insertAfter(node*,int);
         void deleteFirst();
         void deleteLast();
-        void deleteNode();
-        void edit();
-        int getData(int);
+        void deleteNode(node*);
+        void edit(node*,int);
         node* search(int);
         int count();
-        // ~SLL();
+        ~SLL();
 };
 
 SLL::SLL(){
@@ -67,41 +66,21 @@ void SLL::insertAtLast(int data){
         
 }
 
-int SLL::getData(int In){
+void SLL::insertAfter(node* p, int data){
 
-    try{
+    node* n = new node;
+    n->item = data;
 
-        node* t = start;
-        int i;
+    if(p->next==NULL){
 
-        while(t->next){
-
-            t = t->next;
-            i++;
-        }
-
-        if(In>i||In<0){
-
-            throw 0;
-        }
-
-        t = start;
-
-        for(int i = 0; i<In; i++){
-
-            t = t->next;
-        }
-
-        return t->item;
-
+        p->next = NULL;
+        n->next = NULL;
     }
-    catch(int e){
+    else{
 
-        cout<<"Invalid Index"<<endl;
-
-        return -1;
+        n->next = p->next;
+        p->next = n;
     }
-
 }
 
 node* SLL::search(int data){
@@ -120,22 +99,82 @@ node* SLL::search(int data){
     return t;
 }
 
+void SLL::deleteFirst(){
+
+    if(start!=NULL){
+
+        node* n;
+        n = start;
+        start = start->next;
+        delete n; 
+    }
+}
+
+void SLL::deleteLast(){
+
+    if(start!=NULL){
+
+        node* n = start;
+        while(n->next->next){
+
+            n = n->next;
+        }
+        delete n->next;
+
+        n->next = NULL;
+    }
+}
+
+void SLL::deleteNode(node* t){
+
+    node* n = start;
+
+    while(n->next!=t){
+
+        n = n->next;
+    }
+
+    n->next = t->next;
+    
+    delete t;
+}
+
+int SLL::count(){
+
+    int i = 1;
+    node* n = start;
+
+    if(start==NULL){
+
+        return 0;
+    }
+
+    while(n->next != NULL){
+
+        n = n->next;
+        i++;
+    }
+
+    return i;
+}
+
+void SLL::edit(node* n, int data){
+
+    n->item = data;
+}
+
+SLL::~SLL(){
+
+    while(start!=NULL){
+
+        deleteFirst();
+    }
+}
+
 int main(){
 
     SLL obj1;
 
-    obj1.insertAtStart(73);
-    obj1.insertAtLast(34);
-    obj1.insertAtLast(37);
-
-    int k;
-
-    cout<<"Enter the index to search : ";
-    cin>>k;
-
-    int a = obj1.getData(k);
-
-    node* b = obj1.search(9);
-
-    cout<<a<<endl<<b;
+    obj1.insertAtLast(23);
+    obj1.insertAtStart(24);
 }
