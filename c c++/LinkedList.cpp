@@ -97,16 +97,9 @@ void SLL::insertAtLast(int data){
 
 void SLL::insertAfter(node* p, int data){
 
-    node* n = new node;
-    n->item = data;
+    if(p){
 
-    if(p->next==NULL){
-
-        p->next = NULL;
-        n->next = NULL;
-    }
-    else{
-
+        node* n = new node;
         n->next = p->next;
         p->next = n;
     }
@@ -116,13 +109,14 @@ node* SLL::search(int data){
 
     node* t = start;
 
-    while(t->item != data){
+    while(t){
 
-        t = t->next;
-        if(t==NULL){
+        if(t->item==data){
 
             return t;
         }
+
+        t = t->next;
     }
 
     return t;
