@@ -12,7 +12,7 @@ class SLL{
     node* start;
 
     public:
-        
+
         SLL();
         SLL(SLL&);
         SLL& operator=(SLL&);
@@ -47,7 +47,7 @@ SLL::SLL(SLL& l){
 
 SLL& SLL::operator=(SLL& l){
 
-    while(start!=NULL){
+    while(start){
 
         deleteFirst();
     }
@@ -78,7 +78,7 @@ void SLL::insertAtLast(int data){
     n->next = NULL;
 
     t = start;
-    
+
     if(start==NULL){
 
         start = n;
@@ -92,7 +92,7 @@ void SLL::insertAtLast(int data){
 
         t->next = n;
     }
-        
+
 }
 
 void SLL::insertAfter(node* p, int data){
@@ -124,7 +124,7 @@ node* SLL::search(int data){
 
 void SLL::deleteFirst(){
 
-    if(start!=NULL){
+    if(start){
 
         node* n;
         n = start;
@@ -135,31 +135,72 @@ void SLL::deleteFirst(){
 
 void SLL::deleteLast(){
 
-    if(start!=NULL){
+    try{
 
-        node* n = start;
-        while(n->next->next){
+        if(start==NULL){
 
-            n = n->next;
+            throw 1; 
         }
-        delete n->next;
 
-        n->next = NULL;
+        if(start->next==NULL){
+
+            delete start;
+            start = NULL;
+        }
+        else{
+
+            node* n = start;
+            while(n->next->next){
+
+                n = n->next;
+            }
+            delete n->next;
+
+            n->next = NULL;
+        }
+    }
+
+    catch(int e){
+
+        if(e==1)
+        cout<<"List is Empty"<<endl;
     }
 }
 
 void SLL::deleteNode(node* t){
 
-    node* n = start;
+    try{
 
-    while(n->next!=t){
+        if(start==NULL){
 
-        n = n->next;
+        throw 1;
+        }
+
+        if(start==t){
+
+            deleteFirst();
+        }
+        else{
+
+            node* n = start;
+
+            while(n->next!=t){
+
+            n = n->next;
+            }
+
+            n->next = t->next;
+
+            delete t;
+        }
     }
+    catch(int e){
 
-    n->next = t->next;
-    
-    delete t;
+        if(e==1){
+
+            cout<<"List is empty"<<endl;
+        }
+    }
 }
 
 int SLL::count(){
@@ -188,7 +229,7 @@ void SLL::edit(node* n, int data){
 
 SLL::~SLL(){
 
-    while(start!=NULL){
+    while(start){
 
         deleteFirst();
     }

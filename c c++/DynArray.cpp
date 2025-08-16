@@ -9,7 +9,7 @@ class dynArray{
         int* ptr;
 
     public:
-    
+
         dynArray();
         dynArray(dynArray&);
         dynArray& operator=(dynArray&);
@@ -76,7 +76,7 @@ void dynArray::append(int data){
 
         dblArray();
     }
-    
+
         ptr[++lastIn] = data;
 }
 

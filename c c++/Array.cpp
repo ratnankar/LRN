@@ -10,7 +10,7 @@ class Array{
         int *ptr;
 
     public:
-    
+
         Array();
         Array(Array&);
         Array& operator=(Array&);
@@ -158,7 +158,7 @@ void Array::del(int Ind){
     try{
 
         if(Ind<0||Ind>lastIn){
-            
+
             throw 1;
         }
         for(int i = Ind; i<lastIn; i++){
@@ -167,7 +167,7 @@ void Array::del(int Ind){
         }
         lastIn--;
     }
-        
+
 
     catch(int e){
 
@@ -176,7 +176,7 @@ void Array::del(int Ind){
             cout<<"Invalid Index";
         }
     }
-    
+
 }
 
 void Array::edit(int Indx, int el){
@@ -244,5 +244,5 @@ int main(){
     arr2 = arr1;
 
     cout<<arr2.getItem(1);
-    
+
 }
