@@ -3,7 +3,7 @@ using namespace std;
 
 int main(){
 
-    int a[6] = {1,2,3,4,5,0};
+    int a[6] = {1,8,3,4,5,7};
 
     for(int i = 0; i<5; i++){
 
@@ -34,5 +34,15 @@ int main(){
         }
     }
 
-    cout<<a[0]<<" "<<a[1]<<" "<<a[2]<<" "<<a[3]<<" "<<a[4]<<" "<<a[5];
+    for(int i = 0; i<6; i++){
+
+        if(i==6-1){
+
+            cout<<a[i];
+        }
+        else{
+
+            cout<<a[i]<<" ";
+        }
+    }
 }
